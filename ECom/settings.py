@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'product.apps.ProductConfig',  # initialize the app
+    'user.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
@@ -48,7 +49,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [TEMPLATE_DIR, ],
-        'APP_DIRS': False,  # django expects the templates to be inside BaseDir/templates folder not in applications
+        'APP_DIRS': True,  # django expects the templates to be inside BaseDir/templates folder not in applications
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -66,7 +67,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'e_com.sqlite3',  # named to e-com
-    }
+    },
+    # 'e-com': {
+    #     'ENGINE': '',
+    #     'NAME': "",
+    # }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -83,6 +88,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = "user.User"
 
 
 # Internationalization
